@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chris Lai</title>
+    <meta name="description" content="Minimal portfolio of me, Chris Lai." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta property="og:title" content="Chris Lai — Software Developer">
+    <meta property="og:description" content="Personal Website of Chris Lai">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chrisl.ai/">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://chrisl.ai/images/og-image.jpg">
+    <meta name="twitter:image" content="https://chrisl.ai/images/og-image.jpg">
+    <style>
+      :root {
+        --bg: #f8f8f8;
+        --text: #191b1a;
+        --muted: #636a66;
+        --line: #e6e9e6;
+        --accent: #2f855a;
+        --maxw: 920px;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1110;
+          --text: #e6efe8;
+          --muted: #98ab9f;
+          --line: #242b26;
+          --accent: #51a37a;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: var(--mono);
+  color: var(--text);
+  background: var(--bg);
+  letter-spacing: 0.2px; /* tiny tracking helps mono readability */
+      }
+      a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+      a:hover {
+        opacity: 0.9;
+      }
+
+      /* Container left-aligned (no centering) */
+      .wrap {
+        max-width: var(--maxw);
+        padding: 40px 20px 80px 36px;
+        margin: 0;
+      }
+
+      header {
+        display: grid;
+        gap: 16px;
+        align-items: center;
+        grid-template-columns: 96px 1fr;
+      }
+      @media (max-width: 720px) {
+        header {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .avatar {
+        width:96px;
+  aspect-ratio:1/1;
+  border-radius:50%;         /* ← circle */
+  overflow:hidden;           /* ← clip to circle */
+  border:1px solid var(--line);
+  display:grid;
+  place-items:center;
+      }
+      .avatar img {
+        width:100%;
+  height:100%;
+  object-fit:cover;          /* fill the circle nicely */
+  object-position:center; 
+      }
+
+      .intro h1 {
+        margin: 0 0 4px;
+        font-size: clamp(22px, 4vw, 32px);
+      }
+      .intro p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 12px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0;
+        font-size: 14px;
+      }
+      .badge svg {
+        width: 16px;
+        height: 16px;
+        opacity: 0.8;
+      }
+
+      .about {
+        margin-top: 24px;
+      }
+      .about h2 {
+        margin: 0 0 6px;
+      }
+      .about p {
+        margin: 0;
+      }
+
+      .links {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+      .chip {
+        padding: 0;
+      }
+
+      /* Stuff I've Made */
+      .made {
+        margin-top: 40px;
+      }
+      .made h2 {
+        margin: 0 0 10px;
+      }
+      .made p.help {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+      .made-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      @media (max-width: 900px) {
+        .made-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .made-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .tile {
+        display: block;
+        text-decoration: none;
+      }
+      .thumb {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border: 1px solid var(--line);
+        overflow: hidden;
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .caption {
+        margin-top: 6px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .subtle {
+        color: var(--muted);
+        font-style: normal;
+        }
+
+      #contact {
+        display: inline-block;
+        width: 80px; 
+        text-align: left; 
+        }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="avatar" aria-hidden="true">
+            <img
+              src="images/portrait.png"
+              alt="Portrait of Chris Lai"
+              onload="this.nextElementSibling && (this.nextElementSibling.style.display='none')"
+              onerror="this.style.display='none'"
+            />
+            <span style="font-weight:700;font-size:28px;color:var(--accent)">CL</span>
+          </div>
+        <div class="intro">
+          <h1>Chris Lai</h1>
+          <p>Software Developer @ HCSS</p>
+          <div class="badges" aria-label="basic info">
+            <span class="badge" title="Contact">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                style="width: 16px; height: 16px; opacity: 0.8"
+              >
+                <path d="M3 5h18v14H3z" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+              <a href="#" id="contact" data-user="me" data-domain="chrisl.ai"
+                >Copy Email</a
+              >
+              <span
+                id="contactStatus"
+                style="position: absolute; left: -9999px"
+                aria-live="polite"
+              ></span>
+            </span>           
+
+            <span class="badge" title="Location">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path
+                  d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21Z"
+                />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+              Houston, TX
+            </span>
+            <span class="badge" title="Degree">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path d="m2 7 10-4 10 4-10 4-10-4Z" />
+                <path d="M6 10v6" />
+                <path d="M18 10v6" />
+              </svg>
+              B.S. Computer Science
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <section class="about">
+        <div class="card">
+          <h2 style="margin: 0 0 8px">About</h2>
+          <p>
+            I am a builder and appreciator of clean and efficient systems. At
+            work I focus on APIs and backend services across C#/.NET and SQL,
+            with some JavaScript. I primarily use Python, Go, and C# (Unity) for
+            my personal projects. I am continuously inspired by nature and hope
+            my appreciation for the systems of our natural world is reflected in
+            the things I make.
+          </p>
+          <p class="subtle">Below are a few more ways to get to know me.</p>
+        </div>
+        <nav class="links" aria-label="links">
+          <a
+            class="chip"
+            href="https://github.com/merumel"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          <a
+            class="chip"
+            href="https://www.linkedin.com/in/christ-lai/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a class="chip" href="/resume.pdf" target="_blank" rel="noopener"
+            >Résumé</a
+          >
+        </nav>
+      </section>
+
+      <section class="made" aria-label="Stuff I've Made">
+        <h2>Stuff I’ve Made</h2>
+        <p class="help">
+          A few personal things I enjoy building, filming, and designing.
+        </p>
+        <div class="made-grid">
+          <!-- YouTube channel -->
+          <a
+            class="tile"
+            href="https://www.youtube.com/@PsywaveUltra"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="thumb">
+              <img
+                src="images/youtube.png"
+                alt="YouTube — music & aquarium videos"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+            </div>
+            <div class="caption">YouTube — my music & other hobbies</div>
+          </a>
+
+          <!-- Aquarium photo -->
+          <a
+            class="tile"
+            href="images/aquarium.jpg"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="thumb">
+              <img
+                src="images/aquarium.jpg"
+                alt="10 gallon photo"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+            </div>
+            <div class="caption">
+              Aquascaping - 10 Gallon Community Tank (one of many :])
+            </div>
+          </a>
+
+          <!-- Personal site / demo app -->
+          <a
+            class="tile"
+            href="https://maxlevel.tech"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="thumb">
+              <img
+                src="images/MSPWebsite.png"
+                alt="Small website/demo app"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+            </div>
+            <div class="caption">Website for local MSP Business</div>
+          </a>
+        </div>
+      </section>
+      <footer style="
+        margin-top: 60px;
+        padding-top: 20px;
+        font-size: 12px;
+        color: var(--muted);
+        ">
+        © 2025 Chris Lai. All rights reserved.
+        </footer>
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Chris Lai",
+              "url": "https://chrisl.ai/",
+              "sameAs": [
+                "https://github.com/merumel",
+                "https://www.linkedin.com/in/christ-lai/"
+              ],
+              "jobTitle": "Software Developer",
+              "worksFor": {"@type":"Organization","name":"HCSS"}
+            }
+            </script>
+      <script>
+        (function () {
+          const link = document.getElementById("contact");
+          const status = document.getElementById("contactStatus");
+          const email = link.dataset.user + "@" + link.dataset.domain;
+
+          link.addEventListener("click", async (e) => {
+            e.preventDefault();
+            try {
+              if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(email);
+                const old = link.textContent;
+                link.textContent = "Copied!";
+                status.textContent = "Email copied to clipboard";
+                setTimeout(() => {
+                  link.textContent = old;
+                  status.textContent = "";
+                }, 1200);
+              } else {
+                // Simple fallback on older browsers (many older mobiles)
+                window.location.href = "mailto:" + email;
+              }
+            } catch {
+              window.location.href = "mailto:" + email;
+            }
+          });
+        })();
+      </script>
+  </body>
+</html>
